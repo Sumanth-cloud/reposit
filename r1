@@ -1,0 +1,33 @@
+Data Cleaning
+df = read.csv("My_movie data.csv")
+View(df)
+?head()
+head(df)
+tail(df)
+dim(df)
+summary(df)
+str(df)
+df$year<-gsub("[()]","",df$year)
+View(df)
+df$duration<-gsub("min","",df$duration)
+View(df)
+df$year<-as.numeric(df$year)
+df$duration<-as.numeric(df$duration)
+str(df)
+df$X<-NULL
+View(df)
+df$Rank<-c(1:50)
+View(df)
+set.seed(234)
+df$Gross<-runif(50,min=10000000,max=100000000)
+View(df)
+df[1,6]<-NA
+View(df)
+df[5,6]<-NA
+df[3,6]<-NA
+View(df)
+df$V7<-NULL
+View(df)
+df<-df[c("Rank","Name","year","rating","duration","Gross")]
+view(df)
+View(df)
