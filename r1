@@ -1,4 +1,5 @@
-Data Cleaning
+DATA CLEANING IN R
+
 df = read.csv("My_movie data.csv")
 View(df)
 ?head()
