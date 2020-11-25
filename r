@@ -1,4 +1,4 @@
-DATA ACQUISITION
+DATA ACQUISITION IN R
 
 library(robotstxt)
 path<-paths_allowed("https://www.imdb.com/search/title/?groups=top_250&sort=user_rating")        
