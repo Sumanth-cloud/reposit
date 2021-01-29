@@ -1,0 +1,32 @@
+library(caTools)
+library(dplyr)
+library(ggplot2)
+df<-read.csv("cricket.csv")
+head(df)
+View(df)
+str(df)
+df$Points<-gsub(",","",df$Points)
+df$Team<-as.factor(df$Team)
+df$Matches<-as.numeric(df$Matches)
+df$Points<-as.numeric(df$Points)
+df$Rating<-as.numeric(df$Rating)
+summary(df)
+str(df)
+ggplot(df,aes(y=Rating,x=Team,fill=Team))+
+ geom_bar(stat = 'identity')
+ggplot(df,aes(y=Rating,x=Matches))+
+  theme_classic()+
+  geom_line() 
+ggplot(df,aes(y=Rating,x=Points))+
+  theme_classic()+
+  geom_line() 
+split<-sample.split(df,SplitRatio = 0.7)
+train<-subset(df, split='TRUE')
+test<-subset(df, split='FALSE')
+model<-lm(df$Rating~df$Points,data = df)
+summary(model)
+pred<-predict(model,test)
+str(pred)
+data<-data.frame(pred)
+View(data)
+plot(data$pred~df$Points)+plot(df$Rating~df$Points)+abline()
